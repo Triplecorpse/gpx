@@ -53,16 +53,16 @@ function createPointsArray(trkpts){
 //    $scope.points = pointsGlobalArray;
 //}
 
-var pointList = angular.module('pointList', []);
-pointList.controller('PointsCtrl', function setData($scope){
-    $scope.$apply(function(){
-        $scope.points = pointsGlobalArray;
-    });
-    //if(pointsGlobalArray.length > 0)
-    //    $scope.points = pointsGlobalArray;
-    //setTimeout(function(){
-    //    setData($scope)
-    //},2000);
-    console.log('inside angular points', $scope.points);
-    console.log('inside angular points global array', pointsGlobalArray);
-});
+//var pointList = angular.module('pointList', []);
+//pointList.controller('PointsCtrl', function setData($scope){
+//    $scope.$apply(function(){
+//        $scope.points = pointsGlobalArray;
+//    });
+//    //if(pointsGlobalArray.length > 0)
+//    //    $scope.points = pointsGlobalArray;
+//    //setTimeout(function(){
+//    //    setData($scope)
+//    //},2000);
+//    console.log('inside angular points', $scope.points);
+//    console.log('inside angular points global array', pointsGlobalArray);
+//});
