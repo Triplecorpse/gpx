@@ -19,6 +19,6 @@ function gpxInput(evt) {
 }
 
 (function loadFileList() {
-    var response = $.ajax('/trk/2014-12-30 20.27.06 Day.gpx');
+    var response = $.ajax('trk/2014-12-30 20.27.06 Day.gpx');
     console.log(response);
 })();
