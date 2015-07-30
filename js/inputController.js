@@ -27,6 +27,7 @@
 function createModel(AjaxResponseDocument){
     var gpxDocument = AjaxResponseDocument.responseText;
     var tracks = getTracks(gpxDocument);
+    console.log("gpxDoc1", gpxDocument);
     console.log('createModel',tracks);
     var routes = getRoutes(gpxDocument);
     var waypoints = getWaypoints(gpxDocument);
@@ -34,7 +35,7 @@ function createModel(AjaxResponseDocument){
 
 function getTracks(gpxDocument){
     try{
-        console.log("gpxDoc", gpxDocument);
+        console.log("gpxDoc2", gpxDocument);
         var tracks = gpxDocument.getElementsByTagName("trk");
         console.log('getTracks',tracks);
         return tracks;
