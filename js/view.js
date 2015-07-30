@@ -1,9 +1,9 @@
 /**
  * Created by Eldar_Khaitov on 7/27/2015.
  */
-document.getElementById('files').addEventListener('change', gpxInput, false);
+//document.getElementById('files').addEventListener('change', gpxInput, false);
 
-function writeGpx(points){
+//function writeGpx(points){
     //var table = document.getElementById("gpxPoints");
 
     //remove old data
@@ -34,4 +34,4 @@ function writeGpx(points){
     //
     //    table.appendChild(tr);
     //}
-}
+//}
