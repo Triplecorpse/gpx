@@ -34,6 +34,7 @@ function createModel(AjaxResponseDocument){
 
 function getTracks(gpxDocument){
     try{
+        console.log("gpxDoc", gpxDocument);
         var tracks = gpxDocument.getElementsByTagName("trk");
         console.log('getTracks',tracks);
         return tracks;
