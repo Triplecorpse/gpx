@@ -1,0 +1,36 @@
+body{
+    display: flex;
+}
+
+.points{
+    padding: 0;
+    margin: 0;
+    border-spacing: 0;
+    border: 1px solid #EEE;
+}
+
+.points-row{
+    margin: 0;
+    padding: 0;
+}
+
+.points-data{
+    padding: 5px;
+    margin: 0;
+    border: 1px solid #EEE;
+    animation-name: unhover;
+    animation-duration: .5s;
+    cursor: default;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.file-list{
+    min-width: 100px;
+}
+.point-list__label{
+    flex-grow: 1;
+
+}.point-list__select{
+    flex-grow: 2;
+}
