@@ -2,7 +2,7 @@
  * Created by Eldar_Khaitov on 7/28/2015.
  */
 
-var descriptionBase = function(base) {
+var metadata = function(base) {
         this.name = base[0];
         this.cmt = base[1];
         this.desc = base[2];
@@ -11,7 +11,7 @@ var descriptionBase = function(base) {
     },
 
     wptType = function(point, lat, lon, ele, time, magvar, geoidheight, sym, type, fix, sat, hdop, vdop, pdop, ageofgpsdata, dgpsid, name, cmt, desc, src, link){
-        this.__proto__ = new descriptionBase([name, cmt, desc, src, link]);
+        this.__proto__ = new metadata([name, cmt, desc, src, link]);
 
         if((!lat || !lon) && (!point[0] || !point[1])){
             throw "Latitude and longitude required"
@@ -51,12 +51,12 @@ var descriptionBase = function(base) {
     },
 
     rteType = {
-        __proto__: descriptionBase,
+        __proto__: metadata,
         points: []
     },
 
     trkType = {
-        __proto__: descriptionBase,
+        __proto__: metadata,
         points: []
     };
 
