@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="pointList">
 <head>
     <meta charset="UTF-8">
     <title>Files</title>
     <link href="css/styleshit.css" type="text/css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
 </head>
-<body>
+<body ng-controller="PointsCtrl">
 
 
     <!--<div class="file-list">
@@ -16,21 +16,27 @@
     </div>-->
 
     <div class="point-list">
-        <label class="point-list__label">
-            Track #
-            <select class="point-list__select">
-                <option>Track-002-2015-27-07-17-44-00</option>
-            </select>
-        </label><br>
-        <label class="point-list__label">
-            Track segment #
-            <select class="point-list__select">
-                <option>1</option>
-            </select>
-        </label>
         <ul class="points">
-            <li>
-                <span>{{point.lat}}</span><span>{{point.lon}}</span><span>{{point.ele}}</span>
+            <li class="point-row header">
+                <div class="point-data"><span class="vertical-align">Point #</span><input class="filter" ng-model="pointInp" /></div>
+                <div class="point-data"><span class="vertical-align">Trackseg #</span><input class="filter" ng-model="trackSegInp" /></div>
+                <div class="point-data"><span class="vertical-align">Track #</span><input class="filter" ng-model="trackInp" /></div>
+                <div class="point-data"><span class="vertical-align">Point Name</span><input class="filter" ng-model="nameInp" /></div>
+                <div class="point-data"><span class="vertical-align">Latitude</span><input class="filter" ng-model="latInp" /></div>
+                <div class="point-data"><span class="vertical-align">Longitude</span><input class="filter" ng-model="lonInp" /></div>
+                <div class="point-data"><span class="vertical-align">Elevation mean sea level</span><input class="filter" ng-model="eleInp" /></div>
+                <div class="point-data"><span class="vertical-align">UTC Time</span><input class="filter" ng-model="timeInp" /></div>
+            </li>
+            <li ng-repeat="point in points | filter: {pointNum:pointInp} | filter: {trackSegNum:trackSegInp} | filter: {trackNum:trackInp} | filter: {name:nameInp} | filter: {lat:latInp} | filter: {lon:lonInp} | filter: {ele:eleInp} | filter: {time:timeInp}"
+                    ng-init="isSelected=false" ng-click="isSelected=!isSelected; getPosition($event)" ng-class="isSelected ? 'point-row_selected' : 'point-row'" ng-mousedown="getPosition($event)">
+                <div class="point-data"><span class="vertical-align">{{point.pointNum}}</span></div>
+                <div class="point-data"><span class="vertical-align">{{point.trackSegNum}}</span></div>
+                <div class="point-data"><span class="vertical-align">{{point.trackNum}}</span></div>
+                <div class="point-data"><span class="vertical-align">{{point.name}}</span></div>
+                <div class="point-data"><span class="vertical-align">{{point.lat}}</span></div>
+                <div class="point-data"><span class="vertical-align">{{point.lon}}</span></div>
+                <div class="point-data"><span class="vertical-align">{{point.ele + "m"}}</span></div>
+                <div class="point-data"><span class="vertical-align">{{point.time}}</span></div>
             </li>
         </ul>
     </div>

@@ -10,44 +10,44 @@ var metadata = function(base) {
         this.link = base[4]; //array
     },
 
-    wptType = function(point, lat, lon, ele, time, magvar, geoidheight, sym, type, fix, sat, hdop, vdop, pdop, ageofgpsdata, dgpsid, name, cmt, desc, src, link){
+    wptType = function(lat, lon, ele, time, magvar, geoidheight, sym, type, fix, sat, hdop, vdop, pdop, ageofgpsdata, dgpsid, name, cmt, desc, src, link, auxData){
         this.__proto__ = new metadata([name, cmt, desc, src, link]);
 
-        if((!lat || !lon) && (!point[0] || !point[1])){
-            throw "Latitude and longitude required"
+        var validator = {
+            'latitude': ((lat >= -90) && (lat <= 90)),
+            'longitude': ((lon >= -180) && (lon <= 180)),
+            'magnetic variation': magvar && ((magvar >= 0) && (magvar < 360)),
+            'time stamp': time && (time instanceof Date),
+            'fix': fix && ((fix === 'none') || (fix === '2d') || (fix === '3d') || (fix === 'dgps') || (fix === 'pps')),
+            'satellite count': sat && (sat >= 0),
+            'differential gps station': dgpsid && ((dgpsid >= 0) && (dgpsid <= 1023))
+        };
+
+        for(var condition in validator){
+            if((validator.hasOwnProperty(condition)) && !condition){
+                throw "Error in " + condition + " field.";
+            }
         }
 
-        this.lat = point[0] || lat;
-        this.lon = point[1] || lon;
-        this.ele = point[2] || ele;
-        this.time = point[3] || time;
-        this.magvar = point[4] || magvar;
-        this.geoidheight = point[5] || geoidheight;
-        this.sym = point[6] || sym;
-        this.type = point[7] || type;
-        this.fix = point[8] || fix;
+        this.lat = lat;
+        this.lon = lon;
+        this.ele = ele;
+        this.time = time;
+        this.magvar = magvar;
+        this.geoidheight = geoidheight;
+        this.sym = sym;
+        this.type = type;
+        this.fix = fix;
+        this.sat = sat;
+        this.hdop = hdop;
+        this.vdop = vdop;
+        this.pdop = pdop;
+        this.ageofgpsdata = ageofgpsdata;
+        this.dgpsid = dgpsid;
 
-        if(point[9] || sat >= 0) {
-            this.sat = point[9] || sat;
-        }
-
-        this.hdop = point[10] || hdop;
-        this.vdop = point[11] || vdop;
-        this.pdop = point[12] || pdop;
-        this.ageofgpsdata = point[13] || ageofgpsdata;
-        this.dgpsid = point[14] || dgpsid;
-
-        if((this.lat < -90) || (this.lat > 90)){
-            throw "Latitude must be in range from -90 to 90"
-        }
-
-        if((this.lon < -180) || (this.lon > 180)){
-            throw "Longitude must be in range from -180 to 180"
-        }
-
-        if((this.magvar < 0) || (this.lon > 360)){
-            throw "Magvar must be in range from 0 to 360"
-        }
+        this.pointNum = auxData[0];
+        this.trackSegNum = auxData[1];
+        this.trackNum = auxData[2];
     },
 
     rteType = {

@@ -2,6 +2,7 @@
  * Created by Eldar_Khaitov on 7/27/2015.
  */
 //document.getElementById('files').addEventListener('change', gpxInput, false);
+//document.getElementById('track-names').addEventListener('change', , false);
 
 //function writeGpx(points){
     //var table = document.getElementById("gpxPoints");

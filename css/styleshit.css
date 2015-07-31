@@ -2,27 +2,77 @@ body{
     display: flex;
 }
 
+*{
+    box-sizing: content-box;
+}
+
 .points{
     padding: 0;
     margin: 0;
     border-spacing: 0;
-    border: 1px solid #EEE;
+    //border: 1px solid #EEE;
+    width: 960px;
 }
 
-.points-row{
+.point-row{
     margin: 0;
-    padding: 0;
-}
-
-.points-data{
     padding: 5px;
-    margin: 0;
-    border: 1px solid #EEE;
+    display: flex;
+    border: none;
+    border-bottom: 1px solid #EEE;
     animation-name: unhover;
-    animation-duration: .5s;
+    animation-duration: .25s;
+}
+
+.header{
+    height: 80px;
+    background-color: #ffcccc;
+}
+
+.point-row_selected{
+    margin: 0;
+    padding: 5px;
+    display: flex;
+    border: 1px solid #EEE;
+    background: #FF0000;
+    animation-name: unhover;
+    animation-duration: .25s;
+}
+
+.point-row:hover{
+    background: #FCC;
+    animation-name: hover;
+    animation-duration: .25s;
+}
+
+.filter{
+    width: 80px;
+}
+
+/*@keyframes hover {
+    from{background: #FFF;}
+    to{background: #FCC;}
+}
+
+@keyframes unhover {
+    from{background: #FCC;}
+    to{background: #FFF;}
+}*/
+.point-data{
+    display: inline-block;
+    padding: 0 5px;
+    margin: 5px;
+    width: 25%;
     cursor: default;
     text-align: center;
+    line-height: 40px;
+    height: 40px;
+}
+
+.vertical-align{
     vertical-align: middle;
+    display: inline-block;
+    line-height: 18px;
 }
 
 .file-list{
