@@ -4,18 +4,18 @@
 
 var pointsGlobalArray = [];
 
-var pointList = angular.module('pointList', []);
-
-pointList.controller('PointsCtrl', function setData($scope){
+var pointList = angular.module('pointList', [])
+    .value("model", pointsGlobalArray)
+    .controller("PointsCtrl", function($scope){
     $scope.$apply(function(){
         $scope.points = pointsGlobalArray;
     });
-    setTimeout(function(){
-        setData($scope)
-    },2000);
+    //setTimeout(function(){
+    //    setData($scope)
+    //},2000);
 
     $scope.getPosition = function(event) {
-        $scope.items.push( {
+        $scope.xml.push( {
             "label": "Click",
             "value": 100,
             "x": event.offsetX-50,
@@ -23,6 +23,6 @@ pointList.controller('PointsCtrl', function setData($scope){
         });
         alert(event.offsetX);
     };
-    //console.log('inside angular points', $scope.points);
-    //console.log('inside angular points global array', pointsGlobalArray);
+    console.log('inside angular points', $scope.points);
+    console.log('inside angular points global array', pointsGlobalArray);
 });
